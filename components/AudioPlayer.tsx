@@ -12,9 +12,11 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc, audioRef }) => {
         ref={audioRef}
         controls
         className="w-full"
-        // Personnalisation des contrôles avec des styles Tailwind (limité par le navigateur)
       >
-        <source src={audioSrc} type="audio/mp4" />
+        <source src={audioSrc} type="audio/mp3" />
+        <source src={audioSrc} type="audio/ogg" />
+        {/* Ajouter un fallback au cas où les types mp3 et ogg ne sont pas supportés */}
+        Votre navigateur ne supporte pas la lecture audio.
       </audio>
       {/* Style personnalisé pour agrandir les boutons (approximation avec Tailwind) */}
       <style jsx>{`

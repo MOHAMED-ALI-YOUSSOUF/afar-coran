@@ -4,13 +4,12 @@ import PageDisplay from '@/components/PageDisplay';
 import Sidebar from '@/components/Sidebar';
 import React, { useState, useEffect, useRef } from 'react';
 
-
 export default function Coran() {
   const [pages, setPages] = useState<Record<string, { image: string; audio: string }>>({});
   const [selectedPage, setSelectedPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement>(null); // Référence à l'élément audio
+  const audioRef = useRef<HTMLAudioElement | null>(null); // Mise à jour ici
 
   useEffect(() => {
     setLoading(true);
