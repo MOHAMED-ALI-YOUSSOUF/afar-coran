@@ -15,7 +15,6 @@ const AudioPlayer: React.FC<AudioPlayerProps> = ({ audioSrc, audioRef }) => {
         // Personnalisation des contrôles avec des styles Tailwind (limité par le navigateur)
       >
         <source src={audioSrc} type="audio/mp4" />
-        Votre navigateur ne supporte pas l'élément audio.
       </audio>
       {/* Style personnalisé pour agrandir les boutons (approximation avec Tailwind) */}
       <style jsx>{`

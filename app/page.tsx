@@ -18,7 +18,10 @@ export default function Home() {
           
           className="px-6 py-3 bg-emerald-700 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-emerald-800 transition cursor-pointer"
           >
-          📖 Accéder à la traduction du Quran
+
+
+      📖 الوصول إلى ترجمة القرآن
+
         </button>
           </Link>
       </div>
