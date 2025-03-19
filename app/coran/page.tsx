@@ -1,4 +1,4 @@
-"use client";
+"use client"; 
 import AudioPlayer from '@/components/AudioPlayer';
 import PageDisplay from '@/components/PageDisplay';
 import Sidebar from '@/components/Sidebar';
@@ -9,7 +9,7 @@ export default function Coran() {
   const [selectedPage, setSelectedPage] = useState<number>(1);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null); // Mise à jour ici
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +21,7 @@ export default function Coran() {
         return response.json();
       })
       .then((data) => {
-        console.log('Loaded data:', data); // Débogage détaillé
+        console.log('Loaded data:', data);
         if (Object.keys(data).length === 0) {
           console.warn('No data loaded from JSON');
         }
@@ -36,7 +36,7 @@ export default function Coran() {
   }, []);
 
   const handlePageSelect = (pageNum: number) => {
-    console.log(`Selected page: ${pageNum}`); // Débogage
+    console.log(`Selected page: ${pageNum}`);
     setSelectedPage(pageNum);
     // Recharger et lancer l'audio automatiquement
     if (audioRef.current) {
@@ -48,7 +48,7 @@ export default function Coran() {
   };
 
   const currentPageData = pages[`page_${selectedPage}`];
-  console.log('Current page data:', currentPageData); // Débogage
+  console.log('Current page data:', currentPageData);
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -57,18 +57,20 @@ export default function Coran() {
         onPageSelect={handlePageSelect}
         selectedPage={selectedPage}
       />
-      <div className="flex-1 flex flex-col justify-between">
+      <div className="flex-1 flex flex-col justify-between overflow-hidden">
         {loading && <p className="text-center text-gray-500">Chargement...</p>}
         {error && <p className="text-center text-red-500">Erreur : {error}</p>}
         {!loading && !error && (
           <>
-            <PageDisplay pageData={currentPageData} />
-            {currentPageData && (
-              <AudioPlayer
-                audioSrc={currentPageData.audio}
-                audioRef={audioRef}
-              />
-            )}
+            <div className="flex-1 overflow-hidden relative">
+              <PageDisplay pageData={currentPageData} />
+              {currentPageData && (
+                <AudioPlayer
+                  audioSrc={currentPageData.audio}
+                  audioRef={audioRef}
+                />
+              )}
+            </div>
           </>
         )}
       </div>
